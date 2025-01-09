@@ -69,10 +69,10 @@ WSGI_APPLICATION = 'interactions.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
         'PORT': '5433',
     }
 }
@@ -104,7 +104,7 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = f"{env('EMAIL_ADDRESS')}"
-EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 AUTH_PASSWORD_VALIDATORS = [
     {
