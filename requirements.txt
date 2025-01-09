@@ -1,5 +1,11 @@
 django
 flake8
 djangorestframework
+djangorestframework-simplejwt
 django-environ
 wemake-python-styleguide
+psycopg2-binary
+requests
+channels
+channels-redis
+django-redis
