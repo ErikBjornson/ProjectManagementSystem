@@ -51,10 +51,19 @@ class EmployeeManager(BaseUserManager):
 class Employee(AbstractBaseUser):
     """Класс модели сотрудника."""
 
-    email = models.EmailField(unique=True, db_index=True)
-    full_name = models.CharField(null=True, default=None)
+    email = models.EmailField(
+        verbose_name='Адрес электронной почты',
+        unique=True,
+        db_index=True,
+    )
+    full_name = models.CharField(
+        verbose_name='Полное имя сотрудника',
+        null=True,
+        default=None,
+    )
 
     user_type = models.CharField(
+        verbose_name='Роль сотрудника',
         max_length=6,
         choices=[
             ('admin', 'Administrator'),
@@ -64,16 +73,36 @@ class Employee(AbstractBaseUser):
         default='worker',
     )
 
-    is_active = models.BooleanField(default=True)
-    is_stuff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(
+        verbose_name='Активен?',
+        default=True,
+    )
+    is_stuff = models.BooleanField(
+        verbose_name='Внутренний сотрудник?',
+        default=False,
+    )
+    is_superuser = models.BooleanField(
+        verbose_name='Суперпользователь?',
+        default=False,
+    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(
+        verbose_name='Дата создания',
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        verbose_name='Дата обновления',
+        auto_now=True,
+    )
 
     USERNAME_FIELD = 'email'
 
     objects = EmployeeManager()
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
+        ordering = ('full_name',)
 
     def make_superuser(self) -> None:
         """Даёт пользователю привелегии суперпользователя."""

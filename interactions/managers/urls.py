@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from staff.views import (
     ProfileView,
@@ -15,5 +15,10 @@ urlpatterns = [
         route='profile/edit',
         view=ProfileChangeView.as_view(),
         name='manager_profile_change',
+    ),
+    path(
+        route='projects/',
+        view=include('projects.urls'),
+        name='projects_work',
     ),
 ]
