@@ -123,7 +123,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ['email', 'full_name']
+        fields = ['id', 'email', 'full_name', 'user_type']
 
 
 class ProfileChangeSerializer(serializers.ModelSerializer):
